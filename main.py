@@ -71,6 +71,10 @@ for index, row in sensor_info.iterrows():
     right_selected = right_tfr.iloc[right_index:right_index + individual_channels,
                      [0, 1, 2, 3]]  # Assuming column positions are 0 (channel), 1 (value), 2 (freq), and 3 (time)
 
+    # Sort rows by freq and time
+    left_selected = left_selected.sort_values(by=['freq', 'time'])
+    right_selected = right_selected.sort_values(by=['freq', 'time'])
+
     # Append to result_df
     for i in range(individual_channels):
         left_label = left_selected.iloc[i]['channel']
